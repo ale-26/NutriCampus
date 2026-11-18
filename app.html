@@ -22,7 +22,7 @@
     </nav>
     <div class="user-card">
       <span class="avatar">AP</span>
-      <div><strong>Estudiante UPC</strong><small>Plan NutriPass</small></div>
+      <div><strong>Estudiante UPC</strong><small>Modo demostración</small></div>
     </div>
   </aside>
 
@@ -42,28 +42,24 @@
     <section class="schedule-bar" aria-label="Configuración del pedido">
       <label>
         <span>Fecha</span>
-        <select id="dateSelect">
-          <option value="Hoy">Hoy</option>
-          <option value="Mañana">Mañana</option>
-          <option value="Viernes">Viernes</option>
-        </select>
+        <input id="dateSelect" type="date" required>
       </label>
       <label>
         <span>Receso</span>
         <select id="timeSelect">
-          <option value="10:50">10:50 - 11:20</option>
-          <option value="13:00">13:00 - 13:30</option>
-          <option value="16:00">16:00 - 16:30</option>
+          <option value="10:50">Receso mañana · 10:50 (referencial)</option>
+          <option value="13:00">Receso almuerzo · 13:00 (referencial)</option>
         </select>
       </label>
       <label>
         <span>Pick-Up Spot</span>
         <select id="spotSelect">
-          <option>Pabellón A · Lobby</option>
-          <option>Pabellón B · Cafetería</option>
+          <option>Punto de recojo 1 (referencial)</option>
+          <option>Punto de recojo 2 (referencial)</option>
         </select>
       </label>
     </section>
+    <p class="demo-notice">Prototipo: menús, ingredientes, alérgenos, precios, valores nutricionales, horarios y puntos de recojo son referenciales; deben validarse con las cocinas aliadas. No se procesan pagos ni se envían pedidos.</p>
 
     <section id="menuView" class="view active">
       <div class="filter-row" role="toolbar" aria-label="Filtrar menú">
@@ -76,12 +72,12 @@
     </section>
 
     <section id="ordersView" class="view">
-      <div class="page-heading"><h2>Mis pedidos</h2><p>Consulta tus reservas y códigos QR.</p></div>
+      <div class="page-heading"><h2>Mis pedidos</h2><p>Consulta las solicitudes guardadas en este navegador.</p></div>
       <div id="ordersContent"></div>
       <article class="order-empty" id="orderEmpty">
         <span class="empty-icon">◎</span>
         <h3>Aún no tienes pedidos</h3>
-        <p>Reserva tu primer menú y aparecerá aquí.</p>
+        <p>Las reservas de demostración se guardan solo en este navegador.</p>
         <button class="primary-button" data-go-menu>Explorar menú</button>
       </article>
     </section>
@@ -93,19 +89,19 @@
           <p>NutriPass semanal</p>
           <h3>Un receso menos preocupado</h3>
           <ul><li>Delivery gratuito o reducido</li><li>Recetas exclusivas</li><li>Prioridad en tu punto de recojo</li></ul>
-          <button class="primary-button" id="activatePass">Activar prueba de 7 días</button>
+          <button class="primary-button" id="activatePass">Ver beneficios de NutriPass</button>
         </div>
         <div class="pass-badge"><span>NC</span><strong>PASS</strong></div>
       </article>
     </section>
 
     <section id="profileView" class="view">
-      <div class="page-heading"><h2>Mi perfil nutricional</h2><p>Información de ejemplo para personalizar recomendaciones.</p></div>
+      <div class="page-heading"><h2>Mi perfil nutricional</h2><p>Preferencias de demostración; se guardan solo en este navegador y no son consejo médico.</p></div>
       <form class="profile-form" id="profileForm">
-        <label>Objetivo<select><option>Comer de forma equilibrada</option><option>Más proteína</option><option>Reducir calorías</option></select></label>
-        <label>Preferencia<select><option>Sin preferencia</option><option>Vegetariano</option><option>Vegano</option></select></label>
-        <label>Alergenos<input type="text" placeholder="Ej. maní, lactosa"></label>
-        <button class="primary-button" type="submit">Guardar preferencias</button>
+        <label>Objetivo<select id="profileGoal"><option>Comer de forma equilibrada</option><option>Más proteína</option><option>Reducir calorías</option></select></label>
+        <label>Preferencia<select id="profileDiet"><option>Sin preferencia</option><option>Vegetariano</option><option>Vegano</option></select></label>
+        <label>Alérgenos<input id="profileAllergens" type="text" placeholder="Ej. maní, lactosa" maxlength="120"></label>
+        <button class="primary-button" type="submit">Guardar preferencias en este navegador</button>
       </form>
     </section>
   </main>
@@ -116,9 +112,9 @@
       <div id="cartItems" class="cart-items"></div>
       <div class="cart-summary">
         <div><span>Subtotal</span><strong id="subtotal">S/ 0.00</strong></div>
-        <div><span>Recojo</span><strong>S/ 0.00</strong></div>
+        <div><span>Recojo en campus (demo)</span><strong>S/ 0.00</strong></div>
         <div class="total"><span>Total</span><strong id="total">S/ 0.00</strong></div>
-        <button class="primary-button full" id="checkoutButton">Confirmar reserva</button>
+        <button class="primary-button full" id="checkoutButton">Simular reserva</button>
       </div>
     </aside>
   </div>
@@ -127,13 +123,13 @@
     <button class="dialog-close" id="closeCheckout" aria-label="Cerrar">×</button>
     <div class="checkout-content">
       <span class="success-icon">✓</span>
-      <p class="eyebrow">Reserva confirmada</p>
-      <h2>Tu menú está programado</h2>
-      <div class="qr" aria-label="Código QR de demostración">
-        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      <p class="eyebrow">Simulación completada</p>
+      <h2>Solicitud guardada en este navegador</h2>
+      <div class="reservation-code">
+        <span>Código de demostración (no es un QR)</span>
+        <strong id="reservationCode">NC-2400</strong>
       </div>
-      <strong id="qrCode">NC-2400</strong>
-      <p id="checkoutDetails">Presenta este código en el Pick-Up Spot.</p>
+      <p id="checkoutDetails">No se envió a una cocina ni se procesó un pago.</p>
       <button class="primary-button full" id="viewOrders">Ver mis pedidos</button>
     </div>
   </dialog>

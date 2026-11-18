@@ -51,6 +51,14 @@ a { color: inherit; }
   font-size: 13px;
   letter-spacing: -1px;
 }
+.brand-logo {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  object-fit: cover;
+  background: white;
+}
 .nav { display: flex; gap: 26px; margin-left: auto; }
 .nav a, .text-link {
   font-size: 14px;
@@ -308,6 +316,7 @@ footer {
   background: #10281d;
   color: white;
 }
+footer .brand-logo { width: 42px; height: 42px; }
 footer p { margin-left: auto; color: #aebfb5; }
 
 @media (max-width: 900px) {

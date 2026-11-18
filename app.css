@@ -12,6 +12,7 @@ button,select,input { font:inherit; }
 .sidebar { position:fixed; inset:0 auto 0 0; z-index:10; width:245px; display:flex; flex-direction:column; padding:24px 18px; border-right:1px solid var(--line); background:white; }
 .brand { display:flex; align-items:center; gap:10px; color:var(--ink); font-size:18px; font-weight:850; text-decoration:none; }
 .brand-mark { width:38px; height:38px; display:grid; place-items:center; border-radius:50% 50% 44% 44%; background:var(--green); color:white; font-size:12px; }
+.brand-logo { width:42px; height:42px; flex:0 0 auto; border-radius:50%; object-fit:cover; background:white; }
 .app-nav { display:grid; gap:6px; margin-top:52px; }
 .nav-item { height:48px; display:flex; align-items:center; gap:12px; border:0; border-radius:10px; background:transparent; color:#66756e; font-weight:750; text-align:left; cursor:pointer; }
 .nav-item span { width:34px; text-align:center; font-size:18px; }

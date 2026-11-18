@@ -1,139 +1,214 @@
 <!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Demo web de NutriCampus: reserva menús saludables y recolecta sin hacer cola.">
-  <title>NutriCampus | Reserva tu menú</title>
-  <link rel="icon" type="image/png" href="logo-nutricampus.png">
-  <link rel="stylesheet" href="app.css">
-</head>
-<body>
-  <aside class="sidebar">
-    <a class="brand" href="index.html" aria-label="Volver a la página principal">
-      <img class="brand-logo" src="logo-nutricampus.png" alt="">
-      <span>NutriCampus</span>
-    </a>
-    <nav class="app-nav" aria-label="Navegación de la aplicación">
-      <button class="nav-item active" data-view="menu"><span aria-hidden="true">▦</span> Menú</button>
-      <button class="nav-item" data-view="orders"><span aria-hidden="true">◎</span> Mis pedidos</button>
-      <button class="nav-item" data-view="pass"><span aria-hidden="true">◆</span> NutriPass</button>
-      <button class="nav-item" data-view="profile"><span aria-hidden="true">○</span> Mi perfil</button>
-    </nav>
-    <div class="user-card">
-      <span class="avatar">AP</span>
-      <div><strong>Estudiante UPC</strong><small>Modo demostración</small></div>
-    </div>
-  </aside>
-
-  <main class="app-shell">
-    <header class="app-header">
-      <div>
-        <p class="eyebrow">UPC San Isidro</p>
-        <h1>Hola, ¿qué comerás hoy?</h1>
-      </div>
-      <button class="cart-button" id="openCart" aria-label="Abrir carrito">
-        <span aria-hidden="true">🛒</span>
-        <span>Mi pedido</span>
-        <b id="cartCount">0</b>
-      </button>
-    </header>
-
-    <section class="schedule-bar" aria-label="Configuración del pedido">
-      <label>
-        <span>Fecha</span>
-        <input id="dateSelect" type="date" required>
-      </label>
-      <label>
-        <span>Receso</span>
-        <select id="timeSelect">
-          <option value="10:50">Receso mañana · 10:50 (referencial)</option>
-          <option value="13:00">Receso almuerzo · 13:00 (referencial)</option>
-        </select>
-      </label>
-      <label>
-        <span>Pick-Up Spot</span>
-        <select id="spotSelect">
-          <option>Punto de recojo 1 (referencial)</option>
-          <option>Punto de recojo 2 (referencial)</option>
-        </select>
-      </label>
-    </section>
-    <p class="demo-notice">Prototipo: menús, ingredientes, alérgenos, precios, valores nutricionales, horarios y puntos de recojo son referenciales; deben validarse con las cocinas aliadas. No se procesan pagos ni se envían pedidos.</p>
-
-    <section id="menuView" class="view active">
-      <div class="filter-row" role="toolbar" aria-label="Filtrar menú">
-        <button class="filter active" data-filter="Todos">Todos</button>
-        <button class="filter" data-filter="Balanceado">Balanceado</button>
-        <button class="filter" data-filter="Vegano">Vegano</button>
-        <button class="filter" data-filter="Proteico">Proteico</button>
-      </div>
-      <div class="menu-grid" id="menuGrid"></div>
-    </section>
-
-    <section id="ordersView" class="view">
-      <div class="page-heading"><h2>Mis pedidos</h2><p>Consulta las solicitudes guardadas en este navegador.</p></div>
-      <div id="ordersContent"></div>
-      <article class="order-empty" id="orderEmpty">
-        <span class="empty-icon">◎</span>
-        <h3>Aún no tienes pedidos</h3>
-        <p>Las reservas de demostración se guardan solo en este navegador.</p>
-        <button class="primary-button" data-go-menu>Explorar menú</button>
-      </article>
-    </section>
-
-    <section id="passView" class="view">
-      <div class="page-heading"><h2>NutriPass</h2><p>Planifica toda tu semana.</p></div>
-      <article class="pass-card">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Demo web de NutriCampus: reserva menús saludables y recolecta sin hacer cola."
+    />
+    <title>NutriCampus | Reserva tu menú</title>
+    <link rel="icon" type="image/png" href="logo-nutricampus.png" />
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <a
+        class="brand"
+        href="index.html"
+        aria-label="Volver a la página principal"
+      >
+        <img class="brand-logo" src="logo-nutricampus.png" alt="" />
+        <span>NutriCampus</span>
+      </a>
+      <nav class="app-nav" aria-label="Navegación de la aplicación">
+        <button class="nav-item active" data-view="menu">
+          <span aria-hidden="true">▦</span> Menú
+        </button>
+        <button class="nav-item" data-view="orders">
+          <span aria-hidden="true">◎</span> Mis pedidos
+        </button>
+        <button class="nav-item" data-view="pass">
+          <span aria-hidden="true">◆</span> NutriPass
+        </button>
+        <button class="nav-item" data-view="profile">
+          <span aria-hidden="true">○</span> Mi perfil
+        </button>
+      </nav>
+      <div class="user-card">
+        <span class="avatar">AP</span>
         <div>
-          <p>NutriPass semanal</p>
-          <h3>Un receso menos preocupado</h3>
-          <ul><li>Delivery gratuito o reducido</li><li>Recetas exclusivas</li><li>Prioridad en tu punto de recojo</li></ul>
-          <button class="primary-button" id="activatePass">Ver beneficios de NutriPass</button>
+          <strong>Estudiante UPC</strong><small>Modo demostración</small>
         </div>
-        <div class="pass-badge"><span>NC</span><strong>PASS</strong></div>
-      </article>
-    </section>
-
-    <section id="profileView" class="view">
-      <div class="page-heading"><h2>Mi perfil nutricional</h2><p>Preferencias de demostración; se guardan solo en este navegador y no son consejo médico.</p></div>
-      <form class="profile-form" id="profileForm">
-        <label>Objetivo<select id="profileGoal"><option>Comer de forma equilibrada</option><option>Más proteína</option><option>Reducir calorías</option></select></label>
-        <label>Preferencia<select id="profileDiet"><option>Sin preferencia</option><option>Vegetariano</option><option>Vegano</option></select></label>
-        <label>Alérgenos<input id="profileAllergens" type="text" placeholder="Ej. maní, lactosa" maxlength="120"></label>
-        <button class="primary-button" type="submit">Guardar preferencias en este navegador</button>
-      </form>
-    </section>
-  </main>
-
-  <div class="overlay" id="cartOverlay" hidden>
-    <aside class="cart-drawer" aria-label="Carrito">
-      <div class="drawer-header"><h2>Tu pedido</h2><button id="closeCart" aria-label="Cerrar">×</button></div>
-      <div id="cartItems" class="cart-items"></div>
-      <div class="cart-summary">
-        <div><span>Subtotal</span><strong id="subtotal">S/ 0.00</strong></div>
-        <div><span>Recojo en campus (demo)</span><strong>S/ 0.00</strong></div>
-        <div class="total"><span>Total</span><strong id="total">S/ 0.00</strong></div>
-        <button class="primary-button full" id="checkoutButton">Simular reserva</button>
       </div>
     </aside>
-  </div>
 
-  <dialog id="checkoutDialog">
-    <button class="dialog-close" id="closeCheckout" aria-label="Cerrar">×</button>
-    <div class="checkout-content">
-      <span class="success-icon">✓</span>
-      <p class="eyebrow">Simulación completada</p>
-      <h2>Solicitud guardada en este navegador</h2>
-      <div class="reservation-code">
-        <span>Código de demostración (no es un QR)</span>
-        <strong id="reservationCode">NC-2400</strong>
-      </div>
-      <p id="checkoutDetails">No se envió a una cocina ni se procesó un pago.</p>
-      <button class="primary-button full" id="viewOrders">Ver mis pedidos</button>
+    <main class="app-shell">
+      <header class="app-header">
+        <div>
+          <p class="eyebrow">UPC San Isidro</p>
+          <h1>Hola, ¿qué comerás hoy?</h1>
+        </div>
+        <button class="cart-button" id="openCart" aria-label="Abrir carrito">
+          <span aria-hidden="true">🛒</span>
+          <span>Mi pedido</span>
+          <b id="cartCount">0</b>
+        </button>
+      </header>
+
+      <section class="schedule-bar" aria-label="Configuración del pedido">
+        <label>
+          <span>Fecha</span>
+          <input id="dateSelect" type="date" required />
+        </label>
+        <label>
+          <span>Receso</span>
+          <select id="timeSelect">
+            <option value="10:50">Receso mañana · 10:50 (referencial)</option>
+            <option value="13:00">Receso almuerzo · 13:00 (referencial)</option>
+          </select>
+        </label>
+        <label>
+          <span>Pick-Up Spot</span>
+          <select id="spotSelect">
+            <option>Punto de recojo 1 (Pabellón A)</option>
+            <option>Punto de recojo 2 (Pabellón B)</option>
+          </select>
+        </label>
+      </section>
+      <p class="demo-notice">
+        Prototipo: menús, ingredientes, alérgenos, precios, valores
+        nutricionales, horarios y puntos de recojo son referenciales; deben
+        validarse con las cocinas aliadas. No se procesan pagos ni se envían
+        pedidos.
+      </p>
+
+      <section id="menuView" class="view active">
+        <div class="filter-row" role="toolbar" aria-label="Filtrar menú">
+          <button class="filter active" data-filter="Todos">Todos</button>
+          <button class="filter" data-filter="Balanceado">Balanceado</button>
+          <button class="filter" data-filter="Vegano">Vegano</button>
+          <button class="filter" data-filter="Proteico">Proteico</button>
+        </div>
+        <div class="menu-grid" id="menuGrid"></div>
+      </section>
+
+      <section id="ordersView" class="view">
+        <div class="page-heading">
+          <h2>Mis pedidos</h2>
+          <p>Consulta las solicitudes guardadas en este navegador.</p>
+        </div>
+        <div id="ordersContent"></div>
+        <article class="order-empty" id="orderEmpty">
+          <span class="empty-icon">◎</span>
+          <h3>Aún no tienes pedidos</h3>
+          <p>Las reservas de demostración se guardan solo en este navegador.</p>
+          <button class="primary-button" data-go-menu>Explorar menú</button>
+        </article>
+      </section>
+
+      <section id="passView" class="view">
+        <div class="page-heading">
+          <h2>NutriPass</h2>
+          <p>Planifica toda tu semana.</p>
+        </div>
+        <article class="pass-card">
+          <div>
+            <p>NutriPass semanal</p>
+            <h3>Un receso menos preocupado</h3>
+            <ul>
+              <li>Delivery gratuito o reducido</li>
+              <li>Recetas exclusivas</li>
+              <li>Prioridad en tu punto de recojo</li>
+            </ul>
+            <button class="primary-button" id="activatePass">
+              Ver beneficios de NutriPass
+            </button>
+          </div>
+          <div class="pass-badge"><span>NC</span><strong>PASS</strong></div>
+        </article>
+      </section>
+
+      <section id="profileView" class="view">
+        <div class="page-heading">
+          <h2>Mi perfil nutricional</h2>
+          <p>
+            Preferencias de demostración; se guardan solo en este navegador y no
+            son consejo médico.
+          </p>
+        </div>
+        <form class="profile-form" id="profileForm">
+          <label
+            >Objetivo<select id="profileGoal">
+              <option>Comer de forma equilibrada</option>
+              <option>Más proteína</option>
+              <option>Reducir calorías</option>
+            </select></label
+          >
+          <label
+            >Preferencia<select id="profileDiet">
+              <option>Sin preferencia</option>
+              <option>Vegetariano</option>
+              <option>Vegano</option>
+            </select></label
+          >
+          <label
+            >Alérgenos<input
+              id="profileAllergens"
+              type="text"
+              placeholder="Ej. maní, lactosa"
+              maxlength="120"
+          /></label>
+          <button class="primary-button" type="submit">
+            Guardar preferencias en este navegador
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <div class="overlay" id="cartOverlay" hidden>
+      <aside class="cart-drawer" aria-label="Carrito">
+        <div class="drawer-header">
+          <h2>Tu pedido</h2>
+          <button id="closeCart" aria-label="Cerrar">×</button>
+        </div>
+        <div id="cartItems" class="cart-items"></div>
+        <div class="cart-summary">
+          <div><span>Subtotal</span><strong id="subtotal">S/ 0.00</strong></div>
+          <div>
+            <span>Recojo en campus (demo)</span><strong>S/ 0.00</strong>
+          </div>
+          <div class="total">
+            <span>Total</span><strong id="total">S/ 0.00</strong>
+          </div>
+          <button class="primary-button full" id="checkoutButton">
+            Simular reserva
+          </button>
+        </div>
+      </aside>
     </div>
-  </dialog>
-  <div class="toast" id="toast" role="status"></div>
-  <script src="app.js"></script>
-</body>
+
+    <dialog id="checkoutDialog">
+      <button class="dialog-close" id="closeCheckout" aria-label="Cerrar">
+        ×
+      </button>
+      <div class="checkout-content">
+        <span class="success-icon">✓</span>
+        <p class="eyebrow">Simulación completada</p>
+        <h2>Solicitud guardada en este navegador</h2>
+        <div class="reservation-code">
+          <span>Código de demostración (no es un QR)</span>
+          <strong id="reservationCode">NC-2400</strong>
+        </div>
+        <p id="checkoutDetails">
+          No se envió a una cocina ni se procesó un pago.
+        </p>
+        <button class="primary-button full" id="viewOrders">
+          Ver mis pedidos
+        </button>
+      </div>
+    </dialog>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
 </html>

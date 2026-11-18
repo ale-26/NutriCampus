@@ -3,34 +3,193 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="NutriCampus - nutricion y bienestar para estudiantes">
-  <title>NutriCampus</title>
+  <meta name="description" content="NutriCampus ofrece planificación nutricional y delivery programado de menús saludables en la UPC San Isidro.">
+  <title>NutriCampus | Alimentación saludable sin perder tiempo</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="app">
-    <section class="hero">
-      <span class="badge">Nutricion universitaria</span>
-      <h1>NutriCampus</h1>
-      <p>Habitos saludables, informacion clara y bienestar para tu vida universitaria.</p>
-      <a class="button" href="#comenzar">Comenzar</a>
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="Ir al inicio">
+      <span class="brand-mark" aria-hidden="true">NC</span>
+      <span>NutriCampus</span>
+    </a>
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="#propuesta">Propuesta</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#planes">Planes</a>
+      <a href="#objetivos">Objetivos</a>
+    </nav>
+    <a class="nav-cta" href="#planes">Ver planes</a>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-copy">
+        <p class="eyebrow">Foodtech universitaria · UPC San Isidro</p>
+        <h1>Come saludable.<br><span>Sin hacer cola.</span></h1>
+        <p class="hero-text">Planifica tus comidas y recibe menús equilibrados justo en tu receso, con información nutricional clara y sin perder tiempo.</p>
+        <div class="hero-actions">
+          <a class="button" href="#como-funciona">Descubre cómo funciona</a>
+          <a class="text-link" href="#propuesta">Conoce nuestro modelo <span aria-hidden="true">→</span></a>
+        </div>
+        <dl class="hero-stats">
+          <div><dt>S/15</dt><dd>por menú</dd></div>
+          <div><dt>95%</dt><dd>entregas a tiempo</dd></div>
+          <div><dt>3</dt><dd>dark kitchens aliadas</dd></div>
+        </dl>
+      </div>
+      <div class="hero-panel" aria-label="Vista previa de un pedido">
+        <div class="order-card">
+          <div class="order-top">
+            <span>Tu pedido de hoy</span>
+            <span class="status">Confirmado</span>
+          </div>
+          <div class="meal-art" aria-hidden="true">
+            <span class="plate"><span></span></span>
+          </div>
+          <h2>Bowl balanceado</h2>
+          <p>Pollo · Quinua · Aguacate · Vegetales</p>
+          <div class="nutrition">
+            <div><strong>420</strong><span>kcal</span></div>
+            <div><strong>32 g</strong><span>proteína</span></div>
+            <div><strong>48 g</strong><span>carbohidratos</span></div>
+          </div>
+          <div class="pickup">
+            <span class="pickup-icon" aria-hidden="true">●</span>
+            <div><strong>Recojo programado</strong><small>Pabellón principal · 13:00</small></div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="comenzar" class="cards" aria-label="Servicios">
-      <article>
-        <h2>Planifica</h2>
-        <p>Organiza comidas equilibradas que se adapten a tu dia.</p>
-      </article>
-      <article>
-        <h2>Aprende</h2>
-        <p>Descubre informacion sencilla sobre una alimentacion saludable.</p>
-      </article>
-      <article>
-        <h2>Mejora</h2>
-        <p>Construye pequenos habitos sostenibles dentro del campus.</p>
-      </article>
+    <section class="problem-band" id="propuesta">
+      <div>
+        <p class="section-kicker">El problema</p>
+        <h2>El tiempo del receso no alcanza</h2>
+      </div>
+      <div class="problem-grid">
+        <article><strong>85%</strong><span>tiene poco tiempo para comprar comida</span></article>
+        <article><strong>55%</strong><span>encuentra colas frecuentemente o siempre</span></article>
+        <article><strong>70%</strong><span>considera caras las opciones saludables</span></article>
+      </div>
+    </section>
+
+    <section class="section" id="como-funciona">
+      <div class="section-heading">
+        <p class="section-kicker">Nuestra propuesta de valor</p>
+        <h2>Una solución para todo tu día académico</h2>
+        <p>Conectamos a la comunidad universitaria con menús saludables preparados por cocinas aliadas y entregados mediante puntos de recojo programados.</p>
+      </div>
+      <div class="steps">
+        <article>
+          <span class="step-number">01</span>
+          <h3>Planifica</h3>
+          <p>Elige tu menú, revisa ingredientes y alérgenos, y programa la hora de recojo.</p>
+        </article>
+        <article>
+          <span class="step-number">02</span>
+          <h3>Preparamos</h3>
+          <p>Nuestras dark kitchens preparan únicamente los pedidos confirmados, reduciendo desperdicios.</p>
+        </article>
+        <article>
+          <span class="step-number">03</span>
+          <h3>Recoge sin cola</h3>
+          <p>Presenta tu código QR en el Pick-Up Spot justo en tu receso y continúa tu día.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="strategy">
+      <div class="strategy-copy">
+        <p class="section-kicker">Qué queremos lograr</p>
+        <h2>Nutrición práctica para una comunidad universitaria con agendas exigentes.</h2>
+        <p>Queremos facilitar hábitos alimenticios saludables sin exigir más tiempo del que los estudiantes tienen disponible.</p>
+        <ul>
+          <li><strong>Enfoque local</strong><span>Atención inicial a estudiantes y personal de UPC San Isidro.</span></li>
+          <li><strong>Diferenciación</strong><span>Planificación personalizada, entregas coordinadas y información transparente.</span></li>
+          <li><strong>Modelo eficiente</strong><span>Producción bajo pedido mediante cocinas colaboradoras.</span></li>
+        </ul>
+      </div>
+      <div class="mission-vision">
+        <article>
+          <span>Misión</span>
+          <p>Facilitar a la comunidad universitaria el acceso a una alimentación balanceada y personalizada mediante entregas programadas.</p>
+        </article>
+        <article>
+          <span>Visión</span>
+          <p>Ser la plataforma foodtech universitaria referente en el Perú y transformar los hábitos alimenticios del entorno académico.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="planes">
+      <div class="section-heading">
+        <p class="section-kicker">Planes pensados para ti</p>
+        <h2>Elige cómo quieres cuidar tu alimentación</h2>
+      </div>
+      <div class="plans">
+        <article class="plan">
+          <p class="plan-name">Menú individual</p>
+          <div class="price"><strong>S/15</strong><span>por pedido</span></div>
+          <p>Ideal para probar NutriCampus o comprar según tu día.</p>
+          <ul>
+            <li>Información nutricional</li>
+            <li>Opciones vegetarianas y veganas</li>
+            <li>Recojo programado</li>
+          </ul>
+          <a href="#inicio" class="plan-button">Elegir menú</a>
+        </article>
+        <article class="plan featured">
+          <p class="plan-label">Más conveniente</p>
+          <p class="plan-name">NutriPass semanal</p>
+          <div class="price"><strong>S/15</strong><span>por menú</span></div>
+          <p>Programa tu semana y recibe beneficios exclusivos.</p>
+          <ul>
+            <li>Planificación semanal guiada</li>
+            <li>Entrega gratuita o reducida</li>
+            <li>Recetas y prioridad de recojo</li>
+          </ul>
+          <a href="#inicio" class="plan-button">Suscribirme</a>
+        </article>
+        <article class="plan">
+          <p class="plan-name">Grupos y convenios</p>
+          <div class="price"><strong>UPC</strong><span>organizaciones</span></div>
+          <p>Beneficios coordinados para clubes y grupos estudiantiles.</p>
+          <ul>
+            <li>Descuentos grupales</li>
+            <li>Activaciones en campus</li>
+            <li>NutriCampus para eventos</li>
+          </ul>
+          <a href="#contacto" class="plan-button">Solicitar convenio</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="objectives" id="objetivos">
+      <div class="section-heading">
+        <p class="section-kicker">Nuestros objetivos SMART</p>
+        <h2>Resultados medibles desde el primer año</h2>
+      </div>
+      <div class="objective-grid">
+        <article><strong>170</strong><p>usuarios activos durante los primeros 12 meses</p></article>
+        <article><strong>95%</strong><p>de entregas cumplidas en el horario programado</p></article>
+        <article><strong>85+</strong><p>puntos de satisfacción con el servicio</p></article>
+        <article><strong>&lt;2%</strong><p>de incidencias técnicas trimestrales</p></article>
+      </div>
+    </section>
+
+    <section class="cta" id="contacto">
+      <p class="section-kicker">Come mejor durante tus clases</p>
+      <h2>Tu próximo receso puede ser más saludable.</h2>
+      <a class="button button-light" href="#planes">Ver planes de NutriCampus</a>
     </section>
   </main>
+
+  <footer>
+    <a class="brand" href="#inicio"><span class="brand-mark">NC</span><span>NutriCampus</span></a>
+    <p>App Foodtech de planificación nutricional y delivery programado.</p>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
